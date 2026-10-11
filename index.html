@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мій сніговик</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#071b42, #65bce8);
+}
+h1, p { color: white; text-align: center; }
+.snowman { position: relative; width: 250px; height: 350px; }
+.ball {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(135deg, white, #d9e8f5);
+  box-shadow: inset -8px -8px 15px #a8c5dc;
+}
+.head { top: 20px; width: 100px; height: 100px; z-index: 3; }
+.body { top: 105px; width: 150px; height: 150px; z-index: 2; }
+.bottom { top: 220px; width: 205px; height: 130px; }
+.eye {
+  position: absolute; top: 35px;
+  width: 11px; height: 11px;
+  background: #172238; border-radius: 50%;
+}
+.left-eye { left: 27px; }
+.right-eye { right: 27px; }
+.nose {
+  position: absolute; top: 48px; left: 47px;
+  width: 0; height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 30px solid #ff8c22;
+}
+.mouth {
+  position: absolute; top: 69px; left: 35px;
+  color: #26364a; font-size: 14px;
+  letter-spacing: 3px;
+}
+.hat {
+  position: absolute; top: 0; left: 72px;
+  width: 105px; height: 15px;
+  background: #202638; border-radius: 4px; z-index: 5;
+}
+.hat::before {
+  content: ""; position: absolute;
+  width: 65px; height: 40px;
+  background: #202638; left: 20px; bottom: 12px;
+  border-radius: 5px 5px 0 0;
+}
+.scarf {
+  position: absolute; top: 115px; left: 56px;
+  width: 138px; height: 17px;
+  background: #e63946; border-radius: 5px; z-index: 4;
+}
+.scarf::after {
+  content: ""; position: absolute;
+  left: 100px; top: 8px; width: 18px; height: 48px;
+  background: #e63946; transform: rotate(-10deg);
+  border-radius: 3px;
+}
+.button {
+  position: absolute; left: 119px;
+  width: 11px; height: 11px;
+  background: #26364a; border-radius: 50%; z-index: 4;
+}
+.b1 { top: 157px; }
+.b2 { top: 187px; }
+.b3 { top: 215px; }
+.arm {
+  position: absolute; top: 155px;
+  width: 75px; height: 5px;
+  background: #654321; z-index: 1;
+}
+.arm-left { left: -25px; transform: rotate(25deg); }
+.arm-right { right: -25px; transform: rotate(-25deg); }
+.snow {
+  position: fixed; top: -20px; color: white;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+</style>
+</head>
+<body>
+<h1>Мій сніговик ☃️</h1>
+<div class="snowman">
+  <div class="hat"></div>
+  <div class="ball head">
+    <div class="eye left-eye"></div>
+    <div class="eye right-eye"></div>
+    <div class="nose"></div>
+    <div class="mouth">● ● ●</div>
+  </div>
+  <div class="ball body"></div>
+  <div class="ball bottom"></div>
+  <div class="scarf"></div>
+  <div class="button b1"></div>
+  <div class="button b2"></div>
+  <div class="button b3"></div>
+  <div class="arm arm-left"></div>
+  <div class="arm arm-right"></div>
+</div>
+<p>Зима — чудова пора року! ❄️</p>
+<script>
+for (let i = 0; i < 45; i++) {
+  const snow = document.createElement("div");
+  snow.className = "snow";
+  snow.textContent = "❄";
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.fontSize = (10 + Math.random() * 18) + "px";
+  snow.style.animationDuration = (4 + Math.random() * 7) + "s";
+  snow.style.animationDelay = (-Math.random() * 10) + "s";
+  document.body.appendChild(snow);
+}
+</script>
+</body>
+</html>
